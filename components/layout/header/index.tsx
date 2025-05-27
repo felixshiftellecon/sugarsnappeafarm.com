@@ -3,6 +3,7 @@ import Grid from 'components/grid';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 import Link from 'next/link';
+import Script from 'next/script';
 // @ts-ignore
 const ImageLink = ({ src, href }) => {
   return (
@@ -19,6 +20,18 @@ export default async function Header({ isInternalPage }: { isInternalPage?: bool
 
   return (
     <header className={clsx('relative z-10 mx-auto', !isInternalPage && 'lg:pt-12')}>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-WKK2Z264LX"
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-WKK2Z264LX');
+        `}
+      </Script>
       <div
         className={clsx(
           'flex flex-col items-center justify-center px-4 pb-10',
