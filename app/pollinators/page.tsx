@@ -24,6 +24,9 @@ interface Pollinator {
   ecological: string[];
   habitat: string[];
   color: string;
+  photoCredit?: string;
+  photoCreditUrl?: string;
+  flowerPhotoCredit?: string;
 }
 
 export default function PollinatorsPage(): React.ReactNode {
@@ -100,8 +103,21 @@ function PollinatorCard({
   pollinator: Pollinator;
   index: number;
 }): React.ReactNode {
-  const { title, subtitle, identification, flowers, ecological, habitat, color } = pollinator;
+  const {
+    title,
+    subtitle,
+    identification,
+    flowers,
+    ecological,
+    habitat,
+    color,
+    photoCredit,
+    photoCreditUrl
+  } = pollinator;
   const cardId = `pollinator-card-${index}`;
+  const pollinatorImageSrc = pollinatorImages[title];
+  const topFlower = flowers[0];
+  const topFlowerImageSrc = topFlower ? flowerImages[topFlower] : undefined;
 
   // Function to get a lighter version of the color for backgrounds
   const getLighterColor = (): string => {
@@ -148,18 +164,36 @@ function PollinatorCard({
         </div>
 
         {/* Insect Image - Full Width */}
-        <div className="mb-4 w-full overflow-hidden rounded-lg border bg-white shadow-sm">
-          <div className="relative aspect-[16/9] w-full overflow-hidden">
-            <Image
-              src={pollinatorImages[title] || '/placeholder-image.jpg'}
-              alt={`${title} picture`}
-              fill
-              sizes="100vw"
-              style={{ objectFit: 'cover' }}
-              unoptimized
-            />
+        {pollinatorImageSrc && (
+          <div className="mb-4 w-full overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image
+                src={pollinatorImageSrc}
+                alt={`${title} picture`}
+                fill
+                sizes="100vw"
+                style={{ objectFit: 'cover' }}
+                unoptimized
+              />
+            </div>
+            {photoCredit && (
+              <p className="text-xs px-3 pb-2 pt-1 text-center text-gray-600">
+                {photoCreditUrl ? (
+                  <a
+                    href={photoCreditUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:underline"
+                  >
+                    {photoCredit}
+                  </a>
+                ) : (
+                  photoCredit
+                )}
+              </p>
+            )}
           </div>
-        </div>
+        )}
 
         {/* Flowers + Flower Image Row */}
         <div className="mb-4 flex flex-col gap-4 sm:flex-row">
@@ -187,19 +221,24 @@ function PollinatorCard({
           {/* Top Flower Image */}
           <div className="w-full rounded-lg border bg-white p-3 shadow-sm sm:w-1/3">
             <h3 className="mb-2 border-b pb-1 text-center font-semibold" style={{ color: color }}>
-              {flowers[0]}
+              {topFlower}
             </h3>
             <div className="flex h-24 flex-col items-center justify-center text-center">
-              <img
-                src={
-                  flowers[0] && flowerImages[flowers[0]]
-                    ? flowerImages[flowers[0]]
-                    : '/placeholder-flower.jpg'
-                }
-                alt={flowers[0] || 'Flower'}
-                className="h-full w-full object-contain"
-              />
+              {topFlowerImageSrc ? (
+                <img
+                  src={topFlowerImageSrc}
+                  alt={topFlower}
+                  className="h-full w-full object-contain"
+                />
+              ) : (
+                <span className="text-xs text-gray-500">No image available</span>
+              )}
             </div>
+            {pollinator.flowerPhotoCredit && (
+              <p className="text-xs px-3 pb-2 pt-1 text-center text-gray-600">
+                {pollinator.flowerPhotoCredit}
+              </p>
+            )}
           </div>
         </div>
 
