@@ -14,6 +14,8 @@ interface Pollinator {
   ecological: string[];
   habitat: string[];
   color: string;
+  photoCredit?: string;
+  flowerPhotoCredit?: string;
 }
 
 interface DownloadButtonsProps {
@@ -67,77 +69,35 @@ export default function PdfDownloadButtons({ pollinator }: DownloadButtonsProps)
     return { r: 100, g: 100, b: 100 };
   };
 
-  // Helper function to convert a remote image to base64
+  // Helper function to convert an image URL to base64, using a same-origin proxy
   const getBase64FromUrl = async (url: string): Promise<string | null> => {
     try {
-      // For DuckDuckGo and other problematic URLs, use a CORS proxy
-      // Use a public CORS proxy to bypass CORS restrictions
-      const corsProxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
+      // Always go through our own Next.js proxy route so the browser
+      // sees this as a same-origin request and avoids CORS/canvas issues.
+      const proxyUrl = `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
-      try {
-        // Try with the CORS proxy
-        const response = await fetch(corsProxyUrl);
+      const response = await fetch(proxyUrl);
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch image via proxy: ${response.status}`);
-        }
-
-        // Create a blob from the response
-        const blob = await response.blob();
-
-        // Create a FileReader to convert the blob to base64
-        return new Promise<string | null>((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const base64String = reader.result as string;
-            resolve(base64String);
-          };
-          reader.onerror = () => {
-            console.error('Error converting image to base64');
-            resolve(null);
-          };
-          reader.readAsDataURL(blob);
-        });
-      } catch (proxyError) {
-        console.warn('CORS proxy failed:', proxyError);
-
-        // Fallback to another proxy or direct attempt
-        try {
-          // Add cache-busting parameter to URL
-          const cacheBustedUrl = `${url}?t=${Date.now()}`;
-
-          // Create a data URL directly using a canvas element (browser-only)
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
-
-          // Wait for the image to load
-          await new Promise((resolve, reject) => {
-            img.onload = resolve;
-            img.onerror = reject;
-            // Set src after handlers
-            img.src = cacheBustedUrl;
-          });
-
-          // Create a canvas to convert the image
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-
-          // Draw the image to the canvas
-          const ctx = canvas.getContext('2d');
-          if (!ctx) {
-            throw new Error('Could not get canvas context');
-          }
-
-          ctx.drawImage(img, 0, 0);
-
-          // Get the data URL
-          return canvas.toDataURL('image/jpeg');
-        } catch (canvasError) {
-          console.warn('Canvas approach failed:', canvasError);
-          return null;
-        }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image via proxy: ${response.status}`);
       }
+
+      // Create a blob from the response
+      const blob = await response.blob();
+
+      // Create a FileReader to convert the blob to base64
+      return new Promise<string | null>((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64String = reader.result as string;
+          resolve(base64String);
+        };
+        reader.onerror = () => {
+          console.error('Error converting image to base64');
+          resolve(null);
+        };
+        reader.readAsDataURL(blob);
+      });
     } catch (error) {
       console.error('Error fetching image:', error);
       return null;
@@ -346,6 +306,15 @@ export default function PdfDownloadButtons({ pollinator }: DownloadButtonsProps)
           pdf.text(pollinator.title, 0.5 + imgWidth / 2, startY + imgHeight + 0.2, {
             align: 'center'
           });
+
+          // Add pollinator photo credit if available
+          if (pollinator.photoCredit) {
+            pdf.setTextColor(100, 100, 100);
+            pdf.setFontSize(8);
+            pdf.text(pollinator.photoCredit, 0.5 + imgWidth / 2, startY + imgHeight + 0.45, {
+              align: 'center'
+            });
+          }
         }
 
         // Add flower image if available
@@ -394,6 +363,20 @@ export default function PdfDownloadButtons({ pollinator }: DownloadButtonsProps)
           pdf.text(firstFlower, flowerX + flowerWidth / 2, startY + flowerHeight + 0.2, {
             align: 'center'
           });
+
+          // Add flower photo credit if available
+          if (pollinator.flowerPhotoCredit) {
+            pdf.setTextColor(100, 100, 100);
+            pdf.setFontSize(8);
+            pdf.text(
+              pollinator.flowerPhotoCredit,
+              flowerX + flowerWidth / 2,
+              startY + flowerHeight + 0.45,
+              {
+                align: 'center'
+              }
+            );
+          }
         }
 
         // Update Y position for next section

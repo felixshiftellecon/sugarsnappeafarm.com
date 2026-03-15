@@ -354,6 +354,10 @@ export async function getMenu(handle: string): Promise<Menu[]> {
       title: item.title,
       path: item.url
         .replace(domain, '')
+        .replace('https://www.sugarsnappeafarm.com', '')
+        .replace('http://www.sugarsnappeafarm.com', '')
+        .replace('https://sugarsnappeafarm.com', '')
+        .replace('http://sugarsnappeafarm.com', '')
         .replace('/collections', '/search')
         .replace('/pages', '')
         .replace('/search/all', '/products')

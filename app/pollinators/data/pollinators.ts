@@ -7,30 +7,14 @@
 // {
 //   title: 'xxx',
 //   subtitle: 'xxx',
-//   identification: [
-//     'xxx',
-//     'xxx',
-//     'xxx',
-//     'xxx'
-//   ],
-//   flowers: [
-//     'xxx',
-//     'xxx',
-//     'xxx',
-//     'xxx',
-//     'xxx'
-//   ],
-//   ecological: [
-//     'xxx',
-//     'xxx',
-//     'xxx'
-//   ],
-//   habitat: [
-//     'xxx',
-//     'xxx',
-//     'xxx'
-//   ],
-//   color: 'xxx'
+//   identification: ['xxx', 'xxx', 'xxx', 'xxx'],
+//   flowers: ['xxx', 'xxx', 'xxx', 'xxx', 'xxx'],
+//   ecological: ['xxx', 'xxx', 'xxx'],
+//   habitat: ['xxx', 'xxx', 'xxx'],
+//   color: 'xxx',
+//   // Optional: image credit for the main pollinator photo
+//   photoCredit?: 'Photo by Name / Source',
+//   photoCreditUrl?: 'https://link-to-photographer-or-license'
 // }
 
 // Bee Pic
@@ -68,7 +52,9 @@ export const pollinators = [
       'Found in gardens, forests, and parks across Maryland',
       'Active from spring through fall, preferring warm sunny days'
     ],
-    color: '#8B4513' // SaddleBrown
+    color: '#8B4513', // SaddleBrown
+    photoCredit: 'Credit: etstruckhoff',
+    flowerPhotoCredit: 'Credit: Tomato Geek'
   },
   {
     title: 'Rusty-patched Bumble Bee',
@@ -90,7 +76,9 @@ export const pollinators = [
       'Uses grass in nests, grasslands are important',
       'Little is know about hibernation habits'
     ],
-    color: '#A65E2E' // Rust Brown
+    color: '#A65E2E', // Rust Brown
+    photoCredit: 'Credit: David Wolfe',
+    flowerPhotoCredit: 'Credit: Molly Marquand'
   },
   {
     title: 'Eastern Yellowjacket',
@@ -112,7 +100,9 @@ export const pollinators = [
       'Common in forests, meadows, gardens, and parks',
       'Found throughout Maryland'
     ],
-    color: '#E8C15D' // LightGoldenrod
+    color: '#E8C15D', // LightGoldenrod
+    photoCredit: 'Credit: Johnny N. Dell',
+    flowerPhotoCredit: 'Credit: Letícia Almeida'
   },
   {
     title: 'Southern Yellowjacket',
@@ -134,7 +124,9 @@ export const pollinators = [
       'Often found in disturbed areas like yards, parks, and roadsides',
       'Prefers warmer climates, common in eastern Maryland'
     ],
-    color: '#B8860B' // DarkGoldenrod
+    color: '#B8860B', // DarkGoldenrod
+    photoCredit: 'Credit: Jesse Christopherson',
+    flowerPhotoCredit: 'Credit: Helgion'
   },
   {
     title: 'Bald-Faced Hornet',
@@ -156,7 +148,9 @@ export const pollinators = [
       'Found in woodlands, meadows, and suburban areas',
       'Widespread across Maryland'
     ],
-    color: '#2F4F4F' // DarkSlateGray
+    color: '#2F4F4F', // DarkSlateGray
+    photoCredit: 'Credit: David Cappaert',
+    flowerPhotoCredit: 'Credit: Letícia Almeida'
   },
   {
     title: 'Sweat Bee',
@@ -178,7 +172,9 @@ export const pollinators = [
       'Some species nest in rotting wood',
       'Found in gardens, meadows, and natural areas across Maryland'
     ],
-    color: '#556B2F' // DarkOliveGreen
+    color: '#556B2F', // DarkOliveGreen
+    photoCredit: 'Credit: Ecoshield Pest',
+    flowerPhotoCredit: 'Credit: Keystone Wildflowers'
   },
   {
     title: 'Squash Bee',
@@ -200,7 +196,9 @@ export const pollinators = [
       'Active very early in the morning when squash flowers open',
       'Prefer non-tilled soil, tilling can hurt them'
     ],
-    color: '#A0522D' // Sienna
+    color: '#A0522D', // Sienna
+    photoCredit: 'Credit: Alica Morgan',
+    flowerPhotoCredit: 'Credit: Yanely Castro'
   },
   {
     title: 'Mining Bee',
@@ -228,7 +226,9 @@ export const pollinators = [
       'Creates small mounds with center holes where females dig',
       'Common in gardens, meadows, and woodland edges'
     ],
-    color: '#8B4513' // SaddleBrown
+    color: '#8B4513', // SaddleBrown
+    photoCredit: 'Credit: Encyclopedia Britannica',
+    flowerPhotoCredit: 'Credit: Fredlyfish4'
   },
   {
     title: 'Mason Bee',
@@ -256,7 +256,9 @@ export const pollinators = [
       'Does not drill holes but uses pre-existing cavities',
       'Uses mud or other "masonry" products in nest construction'
     ],
-    color: '#4682B4' // SteelBlue
+    color: '#4682B4', // SteelBlue
+    photoCredit: 'Credit: Encyclopedia Britannica',
+    flowerPhotoCredit: 'Credit: photos-public-domain.com'
   },
   {
     title: 'Cuckoo Bumble Bees',
@@ -275,7 +277,9 @@ export const pollinators = [
       'Does not always kill host queen'
     ],
     habitat: ['Other bumble bee nests'],
-    color: '#D1B74D' // EarthYellow
+    color: '#D1B74D', // EarthYellow
+    photoCredit: 'Credit: Pamela Cowart-Rickman',
+    flowerPhotoCredit: 'Credit: Ehrlich'
   },
   {
     title: 'Honey Bee',
@@ -297,58 +301,49 @@ export const pollinators = [
       'Prefers cavities like hollow trees in the wild',
       'Found throughout Maryland in both natural and agricultural areas'
     ],
-    color: '#DAA520' // GoldenRod
+    color: '#DAA520', // GoldenRod
+    photoCredit: 'Credit: Charlotte Anderson',
+    flowerPhotoCredit: 'Credit: David Illig'
   }
 ];
 
 export const pollinatorImages: Record<string, string> = {
   'Eastern Carpenter Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.TbI60Wm7d8G3HWtHzmhDdAHaFw%26pid%3DApi&f=1&ipt=3c11205b41422e942aa09eb041aa720fb706f93b4248ad017e59fc0f589b0e55',
-  'Rusty-patched Bumble Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.davidwolfe.com%2Fwp-content%2Fuploads%2F2017%2F01%2F4-1.jpg&f=1&nofb=1&ipt=4a93e8cec9eb34235476aa82f04f8ff915037ecb6e034c6636aae80d7678437a',
-  'Squash Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffacts.net%2Fwp-content%2Fuploads%2F2021%2F04%2FSquash-Bee.jpg&f=1&nofb=1&ipt=d8c72ea2fc4dc0f860cef735b866cba30c4057a52db22d23442e467bb80b4b75',
-  'Mason Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F15%2F240415-050-FFA90839%2Fred-mason-bee.jpg&f=1&nofb=1&ipt=0e5ab1b16edc73c46c60dadcda15d1766c5629efcf4e3ee5b593a3fc4ad06e14',
-  'Mining Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F17%2F240417-050-D8B8AEC6%2Ftawny-mining-bee.jpg&f=1&nofb=1&ipt=6f3aa72864e77a815060babfc8ca4b5da757b1d44097b3b168dd42c4959d0b15',
-  'Sweat Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ecoshieldpest.com%2Fhubfs%2FSweat%2520Bee%2520Covered%2520in%2520Pollen.png&f=1&nofb=1&ipt=5bd298e529daf3baacba34e8342da5a620a0f169c11bad3c7668748ed8c11d43',
+    'https://inaturalist-open-data.s3.amazonaws.com/photos/94190165/medium.jpg',
+  'Rusty-patched Bumble Bee': 'https://cdn.davidwolfe.com/wp-content/uploads/2017/01/4-1.jpg',
+  'Squash Bee': 'https://facts.net/wp-content/uploads/2021/04/Squash-Bee.jpg',
+  'Mason Bee': 'https://cdn.britannica.com/15/240415-050-FFA90839/red-mason-bee.jpg',
+  'Mining Bee': 'https://cdn.britannica.com/17/240417-050-D8B8AEC6/tawny-mining-bee.jpg',
+  'Sweat Bee': 'https://www.ecoshieldpest.com/hubfs/Sweat%20Bee%20Covered%20in%20Pollen.png',
   'Eastern Yellowjacket':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fentomologytoday.org%2Fwp-content%2Fuploads%2F2019%2F03%2Feastern-yellowjacket-Vespula-maculifrons.jpg&f=1&nofb=1&ipt=236f69b406f0474a37d28199dd788bb76290cb57345328f89ad1db9bb08743e6',
+    'https://entomologytoday.org/wp-content/uploads/2019/03/eastern-yellowjacket-Vespula-maculifrons.jpg',
   'Southern Yellowjacket':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fobjects.liquidweb.services%2Fimages%2F201811%2Fjesse_christopherson_45640080302_d863cf3bf4_b.jpg&f=1&nofb=1&ipt=053581c45d79feb9b92bd15e8e448929c1c31f755c5fb9b7be22e5b5e68242aa',
-  'Bald-Faced Hornet':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.statically.io%2Fimg%2Fi.pinimg.com%2Foriginals%2Fa0%2F42%2F32%2Fa042329702a33d3325334e2a05157ec4.jpg&f=1&nofb=1&ipt=f8f1b2956869c3067d1f1eda56b1f53289a6ffe7f89abe1ca40c02787bb8b405',
+    'https://objects.liquidweb.services/images/201811/jesse_christopherson_45640080302_d863cf3bf4_b.jpg',
+  'Bald-Faced Hornet': 'https://bugwoodcloud.org/images/768x512/5403460.jpg',
   'Cuckoo Bumble Bees':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmaps.biodiversityireland.ie%2FSpecies%2F55998%2FFour%2520Coloured%2520Cuckoo%2520Bee%2520(Bombus%2520(Psithyrus)%2520sylvestris)_2.jpg&f=1&nofb=1&ipt=257fb1cb933e86d697dcdbdd43734d4aa62d8cca10e060f9742cb279a2d9eac0',
-  'Honey Bee':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcarolinahoneybees.com%2Fwp-content%2Fuploads%2F2022%2F11%2Fvisual-looks-honey-bee.jpg&f=1&nofb=1&ipt=d2fba2c164ddc15b84444cef67b33e9ff8d20c888fc8f5f5097f7db294a32b0b'
+    'https://objects.liquidweb.services/images/202108/inat_1628040932-610a950bdfb6e.jpg',
+  'Honey Bee': 'https://carolinahoneybees.com/wp-content/uploads/2022/11/visual-looks-honey-bee.jpg'
 };
 
 export const flowerImages: Record<string, string> = {
-  Tomatoes:
-    'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg-aws.ehowcdn.com%2F877x500p%2Fphotos.demandstudios.com%2F25%2F135%2Ffotolia_3817158_XS.jpg&f=1&nofb=1&ipt=a17bac88d46f716439c062a7cc3c06eddb2505368b2278c3eaeb9accc40871dc',
+  Tomatoes: 'https://tomatogeek.com/wp-content/uploads/2021/01/Tomato-Flowers-Closeup.jpg',
   'New Jersey tea':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0739%2F9053%2Fproducts%2FNew-Jersey-Tea_1024x1024.jpg%3Fv%3D1478603346&f=1&nofb=1&ipt=fbd8e1ae244a1e98913a5976d6915c2663006404d0615437f8ccfbc96fa3d006',
+    'https://gardenerspath.com/wp-content/uploads/2024/09/Grow-New-Jersey-Tea-Feature.jpg',
   Pumpkins:
-    'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdiy.sndimg.com%2Fcontent%2Fdam%2Fimages%2Fdiy%2Ffullset%2F2005%2F5%2F25%2F2%2FFFTG107-_Step_17.jpg.rend.hgtvcom.1280.960.suffix%2F1454185087193.jpeg&f=1&nofb=1&ipt=9ccecbaebd0f08c0abcb533977400b42a38d8766cd98e983b6bb9ec164fe1f82',
+    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2020%2F07%2F11%2F16%2F22%2Fflower-5394594_1280.jpg&f=1&nofb=1&ipt=21058c5a02f4685d0d4cf0c515881634535cc0b9e80416cac456eaaaa449abad',
   'Fruit trees':
-    'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.photos-public-domain.com%2Fwp-content%2Fuploads%2F2011%2F04%2Fapple-blossoms-close-up.jpg&f=1&nofb=1&ipt=13a70bcb50b5455323955f22533f64045da5a1798846144d3c9e34db83efcb88',
+    'http://www.photos-public-domain.com/wp-content/uploads/2011/04/apple-blossoms-close-up.jpg',
   'Spring beauty':
-    'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-XMQnOHPL0B4%2FTygdCevZ8RI%2FAAAAAAAAH4M%2Fyy_L_qfGpM8%2Fs1600%2FSpring-beauty-flower%252B%2525284%252529.jpg&f=1&nofb=1&ipt=ed6e96dace8a57b9b4be0efdd76899b8feddff3e955357ae965e78ead12a5da5',
+    'https://eattheplanet.org/wp-content/uploads/2020/04/2560px-Claytonia_virginica_UMFS_1-1024x730.jpg',
   'Native wildflowers':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.keystonewildflowers.com%2Fmedia%2FMertensia-virginica-virginia-bluebells.jpg&f=1&nofb=1&ipt=8ea53f6b0ec3251d9429600c0af7717c92392af1ff281d487d7cfad3f17c132a',
+    'https://www.keystonewildflowers.com/media/Mertensia-virginica-virginia-bluebells.jpg',
   Goldenrod:
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thespruce.com%2Fthmb%2FadYGODvCJjh1gm-YkAU2Q9mF1LM%3D%2F6720x4480%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2Fgoldenrod-wildflowers-2132951-06-ac848e5f75204d4daf11efd3044d911e.jpg&f=1&nofb=1&ipt=3591e68965ccb4c3cd9084be099d14ae91bb942fd01210e0eedd3af861a99934',
-  'Late wildflowers':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2022%2F01%2F14%2F19%2F58%2Fchicory-6938101_1280.jpg&f=1&nofb=1&ipt=f64d0f7dcc6c224bbb50b53b094114fe729d7b21b4e594aed2f7147c9307aac8',
-  Blueberries:
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdirectnativeplants.com%2Fwp-content%2Fuploads%2F2018%2F08%2Fblueberry2-1-768x576.jpg&f=1&nofb=1&ipt=860b2bc2e432bf9e07c58331acbc3a12c1ad6f1fad4e6c6cd441e7493282d9f5',
+    'https://www.thespruce.com/thmb/adYGODvCJjh1gm-YkAU2Q9mF1LM=/6720x4480/filters:no_upscale():max_bytes(150000):strip_icc()/goldenrod-wildflowers-2132951-06-ac848e5f75204d4daf11efd3044d911e.jpg',
+  'Late wildflowers': 'https://cdn.pixabay.com/photo/2022/01/14/19/58/chicory-6938101_1280.jpg',
   'Bumble bee nest':
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.treehugger.com%2Fthmb%2FNrIwU71sPXGONjExndJ5R6k9itA%3D%2F3840x2160%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2FGettyImages-916563540-891eb629a7e445b3b0ea559e529c47b5.jpg&f=1&nofb=1&ipt=ca5ed6430e8f00543c0d5fb55c0bb466ef7463663a6ab33390576490c27870b6',
+    'https://www.treehugger.com/thmb/NrIwU71sPXGONjExndJ5R6k9itA=/3840x2160/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-916563540-891eb629a7e445b3b0ea559e529c47b5.jpg',
   Clover:
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fobjects.liquidweb.services%2Fimages%2F201906%2Fdavid_illig_47960396171_2b81da58f0_b.jpg&f=1&nofb=1&ipt=f5d0cf70c1ad8958255608fd6f6102e140a848eac1a40e3666608c15258e1db1'
+    'https://objects.liquidweb.services/images/201906/david_illig_47960396171_2b81da58f0_b.jpg'
 };
 
 export const getPollinatorInfoURL = (scientificName: string): string => {
