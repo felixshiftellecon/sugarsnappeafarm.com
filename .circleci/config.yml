@@ -28,7 +28,7 @@ jobs:
 
   Publish-to-Pages:
     docker:
-      - image: cimg/node:18.17.0
+      - image: cimg/node:22.23.2
 
     steps:
       - checkout
