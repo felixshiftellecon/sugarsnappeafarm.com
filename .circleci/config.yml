@@ -1,5 +1,31 @@
 version: 2.1
+
+orbs:
+  node: circleci/node@7.2.1
+
+executors:
+  node18:
+    docker:
+      - image: cimg/node:18.17.0
+
 jobs:
+  # Validates Dependabot PRs: fresh pnpm install from the lockfile,
+  # then lint + build. Errors on a Dependabot PR block the merge.
+  dependabot-check:
+    executor: node18
+    steps:
+      - checkout
+      - node/install-pnpm:
+          version: "8.2.0"
+      - node/install-packages:
+          pkg-manager: pnpm
+      - run:
+          name: Lint
+          command: pnpm lint
+      - run:
+          name: Build
+          command: pnpm build
+
   Publish-to-Pages:
     docker:
       - image: cimg/node:18.17.0
@@ -12,6 +38,19 @@ jobs:
       - run: npx wrangler pages deploy dist --project-name="sugar-snap-pea.pages.dev" # Replace dist with the name of your build folder and input your project name
 
 workflows:
+  # Runs only for branches created by Dependabot; reports a check
+  # status back to the PR so the update can be verified before merge.
+  dependabot-checks:
+    jobs:
+      - dependabot-check:
+          filters:
+            branches:
+              only: /^dependabot\/.*/
+
   Publish-to-Pages-workflow:
     jobs:
-      - Publish-to-Pages
+      - Publish-to-Pages:
+          filters:
+            branches:
+              only:
+                - main
