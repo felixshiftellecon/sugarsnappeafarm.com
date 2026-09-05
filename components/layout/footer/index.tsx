@@ -16,7 +16,7 @@ export default function Footer() {
         </p>
         <br></br>
         <p>
-          <a href="mailto:sugarsnappeafarm@gmail.com">sugarsnappeafarm@gmail.com</a>
+          <a href="mailto:admin@sugarsnappeafarm.com">admin@sugarsnappeafarm.com</a>
         </p>
       </div>
     </div>
