@@ -19,7 +19,14 @@ export default async function Header({ isInternalPage }: { isInternalPage?: bool
   const menu = await getMenu(MAIN_MENU_NAME || '');
 
   return (
-    <header className={clsx('relative z-10 mx-auto', !isInternalPage && 'lg:pt-12')}>
+    <header className="relative z-10 mx-auto">
+      <a href="/" className="absolute top-2 left-2 z-20">
+        <img
+          src="https://i.postimg.cc/WpmDS7tL/veteran-owned-2056651936.png"
+          alt="Veteran Owned"
+          className="h-16 w-auto md:h-20"
+        />
+      </a>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-WKK2Z264LX"
         strategy="afterInteractive"
