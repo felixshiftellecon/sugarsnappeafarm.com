@@ -310,7 +310,7 @@ export const pollinators = [
 export const pollinatorImages: Record<string, string> = {
   'Eastern Carpenter Bee':
     'https://inaturalist-open-data.s3.amazonaws.com/photos/94190165/medium.jpg',
-  'Rusty-patched Bumble Bee': 'https://cdn.davidwolfe.com/wp-content/uploads/2017/01/4-1.jpg',
+  'Rusty-patched Bumble Bee': 'https://inaturalist-open-data.s3.amazonaws.com/photos/10410811/medium.jpg',
   'Squash Bee': 'https://facts.net/wp-content/uploads/2021/04/Squash-Bee.jpg',
   'Mason Bee': 'https://cdn.britannica.com/15/240415-050-FFA90839/red-mason-bee.jpg',
   'Mining Bee': 'https://cdn.britannica.com/17/240417-050-D8B8AEC6/tawny-mining-bee.jpg',
