@@ -77,7 +77,7 @@ export const pollinators = [
       'Little is know about hibernation habits'
     ],
     color: '#A65E2E', // Rust Brown
-    photoCredit: 'Credit: David Wolfe',
+    photoCredit: 'Credit: scottking',
     flowerPhotoCredit: 'Credit: Molly Marquand'
   },
   {
